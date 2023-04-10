@@ -9,6 +9,7 @@ Use this template to start developing your own Compose Multiplatform application
 Template have configured MOKO libraries:
 - [moko-resources](https://github.com/icerockdev/moko-resources)
 - [moko-mvvm](https://github.com/icerockdev/moko-mvvm)
+- [moko-permissions](https://github.com/icerockdev/moko-permissions)
 
 ## Setting up your development environment
 
