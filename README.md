@@ -7,9 +7,10 @@ Use this template to start developing your own Compose Multiplatform application
 ![](readme_images/banner.png)
 
 Template have configured MOKO libraries:
-- [moko-resources](https://github.com/icerockdev/moko-resources)
-- [moko-mvvm](https://github.com/icerockdev/moko-mvvm)
-- [moko-permissions](https://github.com/icerockdev/moko-permissions)
+- [moko-resources](https://github.com/icerockdev/moko-resources) - use images, fonts and other resources
+- [moko-mvvm](https://github.com/icerockdev/moko-mvvm) - handle android configuration cache
+- [moko-permissions](https://github.com/icerockdev/moko-permissions) - request runtime permissions
+- [moko-media](https://github.com/icerockdev/moko-media) - pick photo from Gallery of Camera
 
 ## Setting up your development environment
 

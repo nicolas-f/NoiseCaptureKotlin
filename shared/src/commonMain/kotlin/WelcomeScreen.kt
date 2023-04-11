@@ -37,5 +37,9 @@ fun WelcomeScreen(route: (Route) -> Unit) {
         Button(onClick = { route(Route.Permissions) }) {
             Text(text = "moko-permissions")
         }
+
+        Button(onClick = { route(Route.Media) }) {
+            Text(text = "moko-media")
+        }
     }
 }

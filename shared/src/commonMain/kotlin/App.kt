@@ -26,6 +26,10 @@ fun App() {
             Route.Permissions -> PermissionsScreen(
                 backAction = { currentScreen = Route.Welcome }
             )
+
+            Route.Media -> MediaScreen(
+                backAction = { currentScreen = Route.Welcome }
+            )
         }
     }
 }
