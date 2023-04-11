@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!--  moko-permissions demo block end  -->
+    <!--  moko-media demo block start  -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--  moko-media demo block end  -->
 
     <application
         android:allowBackup="true"

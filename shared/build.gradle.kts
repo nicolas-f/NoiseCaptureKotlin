@@ -31,6 +31,7 @@ kotlin {
         val mokoResourcesVersion = extra["moko.resources.version"] as String
         val mokoMvvmVersion = extra["moko.mvvm.version"] as String
         val mokoPermissionsVersion = extra["moko.permissions.version"] as String
+        val mokoMediaVersion = extra["moko.media.version"] as String
 
         val commonMain by getting {
             dependencies {
@@ -40,12 +41,14 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                api("dev.icerock.moko:resources:${mokoResourcesVersion}")
-                api("dev.icerock.moko:resources-compose:${mokoResourcesVersion}")
+                implementation("dev.icerock.moko:resources:${mokoResourcesVersion}")
+                implementation("dev.icerock.moko:resources-compose:${mokoResourcesVersion}")
 
-                api("dev.icerock.moko:mvvm-compose:$mokoMvvmVersion")
+                implementation("dev.icerock.moko:mvvm-compose:$mokoMvvmVersion")
 
-                api("dev.icerock.moko:permissions-compose:$mokoPermissionsVersion")
+                implementation("dev.icerock.moko:permissions-compose:$mokoPermissionsVersion")
+
+                implementation("dev.icerock.moko:media-compose:$mokoMediaVersion")
             }
         }
         val androidMain by getting {
