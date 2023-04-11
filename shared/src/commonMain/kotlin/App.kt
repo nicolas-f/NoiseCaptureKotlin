@@ -30,6 +30,10 @@ fun App() {
             Route.Media -> MediaScreen(
                 backAction = { currentScreen = Route.Welcome }
             )
+
+            Route.Biometry -> BiometryScreen(
+                backAction = { currentScreen = Route.Welcome }
+            )
         }
     }
 }

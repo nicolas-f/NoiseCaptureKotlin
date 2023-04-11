@@ -32,6 +32,7 @@ kotlin {
         val mokoMvvmVersion = extra["moko.mvvm.version"] as String
         val mokoPermissionsVersion = extra["moko.permissions.version"] as String
         val mokoMediaVersion = extra["moko.media.version"] as String
+        val mokoBiometryVersion = extra["moko.biometry.version"] as String
 
         val commonMain by getting {
             dependencies {
@@ -49,6 +50,8 @@ kotlin {
                 implementation("dev.icerock.moko:permissions-compose:$mokoPermissionsVersion")
 
                 implementation("dev.icerock.moko:media-compose:$mokoMediaVersion")
+
+                implementation("dev.icerock.moko:biometry-compose:$mokoBiometryVersion")
             }
         }
         val androidMain by getting {
