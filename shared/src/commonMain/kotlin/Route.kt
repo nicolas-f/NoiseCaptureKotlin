@@ -3,5 +3,6 @@ enum class Route {
     Resources,
     ViewModel,
     Permissions,
-    Media
+    Media,
+    Biometry
 }
