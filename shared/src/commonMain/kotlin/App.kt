@@ -34,6 +34,10 @@ fun App() {
             Route.Biometry -> BiometryScreen(
                 backAction = { currentScreen = Route.Welcome }
             )
+
+            Route.Geo -> GeoScreen(
+                backAction = { currentScreen = Route.Welcome }
+            )
         }
     }
 }

@@ -4,5 +4,6 @@ enum class Route {
     ViewModel,
     Permissions,
     Media,
-    Biometry
+    Biometry,
+    Geo
 }

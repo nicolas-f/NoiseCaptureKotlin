@@ -33,6 +33,7 @@ kotlin {
         val mokoPermissionsVersion = extra["moko.permissions.version"] as String
         val mokoMediaVersion = extra["moko.media.version"] as String
         val mokoBiometryVersion = extra["moko.biometry.version"] as String
+        val mokoGeoVersion = extra["moko.geo.version"] as String
 
         val commonMain by getting {
             dependencies {
@@ -42,8 +43,7 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                implementation("dev.icerock.moko:resources:${mokoResourcesVersion}")
-                implementation("dev.icerock.moko:resources-compose:${mokoResourcesVersion}")
+                implementation("dev.icerock.moko:resources-compose:$mokoResourcesVersion")
 
                 implementation("dev.icerock.moko:mvvm-compose:$mokoMvvmVersion")
 
@@ -52,6 +52,8 @@ kotlin {
                 implementation("dev.icerock.moko:media-compose:$mokoMediaVersion")
 
                 implementation("dev.icerock.moko:biometry-compose:$mokoBiometryVersion")
+
+                implementation("dev.icerock.moko:geo-compose:$mokoGeoVersion")
             }
         }
         val androidMain by getting {

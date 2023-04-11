@@ -45,5 +45,9 @@ fun WelcomeScreen(route: (Route) -> Unit) {
         Button(onClick = { route(Route.Biometry) }) {
             Text(text = "moko-biometry")
         }
+
+        Button(onClick = { route(Route.Geo) }) {
+            Text(text = "moko-geo")
+        }
     }
 }
