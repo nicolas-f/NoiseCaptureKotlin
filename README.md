@@ -21,6 +21,15 @@ Template have configured MOKO libraries:
 - [moko-biometry](https://github.com/icerockdev/moko-biometry) - call TouchID and FaceID
 - [moko-geo](https://github.com/icerockdev/moko-geo) - track geolocation
 
+<details>
+<summary>Check video demonstration of MOKO libraries with Compose Multiplatform</summary>
+
+https://user-images.githubusercontent.com/5010169/231541929-03d37bff-2aef-4fe3-a7da-fb559dad90c9.mp4
+
+https://user-images.githubusercontent.com/5010169/231541851-ead5cec2-93af-4e67-a3c2-8c0a446122a6.mp4
+
+</details>
+
 If you want to create an application targeting desktop platforms – Windows, macOS, and Linux,
 use the [Compose Multiplatform for Desktop template](https://github.com/JetBrains/compose-multiplatform-desktop-template#readme).
 
