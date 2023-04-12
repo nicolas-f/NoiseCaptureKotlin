@@ -11,6 +11,8 @@ Template have configured MOKO libraries:
 - [moko-mvvm](https://github.com/icerockdev/moko-mvvm) - handle android configuration cache
 - [moko-permissions](https://github.com/icerockdev/moko-permissions) - request runtime permissions
 - [moko-media](https://github.com/icerockdev/moko-media) - pick photo from Gallery of Camera
+- [moko-biometry](https://github.com/icerockdev/moko-biometry) - call TouchID and FaceID
+- [moko-geo](https://github.com/icerockdev/moko-geo) - track geolocation
 
 ## Setting up your development environment
 
