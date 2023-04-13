@@ -21,6 +21,8 @@ Template have configured MOKO libraries:
 - [moko-biometry](https://github.com/icerockdev/moko-biometry) - call TouchID and FaceID
 - [moko-geo](https://github.com/icerockdev/moko-geo) - track geolocation
 
+![moko-repo-header](https://user-images.githubusercontent.com/5010169/231642086-8f243134-2c72-4edc-95bb-12979f512c14.png)
+
 <details>
 <summary>Check video demonstration of MOKO libraries with Compose Multiplatform</summary>
 
