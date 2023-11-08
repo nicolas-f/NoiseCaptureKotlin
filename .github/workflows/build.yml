@@ -12,9 +12,6 @@ on:
       shouldRunIos:
         required: true
         type: string
-      shouldRunDesktop:
-        required: true
-        type: string
 
 jobs:
   Android:
