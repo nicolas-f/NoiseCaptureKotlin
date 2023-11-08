@@ -4,7 +4,7 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: ./gradlew :shared:generateDummyFramework
+      run: ./gradlew :NoiseCaptureCommon:generateDummyFramework
 
     - name: Set up cocoapods
       uses: maxim-lobanov/setup-cocoapods@v1

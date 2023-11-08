@@ -12,9 +12,6 @@ on:
       shouldRunIos:
         required: true
         type: string
-      shouldRunDesktop:
-        required: true
-        type: string
 
 jobs:
   Android:
@@ -27,19 +24,7 @@ jobs:
       - name: Job set up
         uses: ./.github/actions/job-set-up
 
-      - run: ./gradlew clean testDebug -p androidApp/
-
-  Desktop:
-    if: ${{ inputs.shouldRunKmp == 'true' || inputs.shouldRunDesktop == 'true' }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Job set up
-        uses: ./.github/actions/job-set-up
-
-      - run: ./gradlew clean jvmTest -p desktopApp/
+      - run: ./gradlew clean testDebug -p NoiseCaptureAndroid/
 
   iOS:
 #    if: ${{ inputs.shouldRunKmp == 'true' || inputs.shouldRunIos == 'true' }}
@@ -55,7 +40,7 @@ jobs:
       - name: iOS set up
         uses: ./.github/actions/ios-set-up
 
-      - run: xcodebuild build test -workspace iosApp/iosApp.xcworkspace -configuration Debug -scheme iosApp -sdk iphoneos -destination name='iPhone 14' -verbose
+      - run: xcodebuild build test -workspace NoiseCaptureIOS/NoiseCaptureIOS.xcworkspace -configuration Debug -scheme iosApp -sdk iphoneos -destination name='iPhone 14' -verbose
 
       - name: Upload logs
         if: always()
@@ -73,19 +58,7 @@ jobs:
       - name: Job set up
         uses: ./.github/actions/job-set-up
 
-      - run: ./gradlew clean testDebugUnitTest -p shared/
-
-  KMP-Desktop:
-    if: ${{ inputs.shouldRunKmp == 'true'}}
-    runs-on: macos-12
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Job set up
-        uses: ./.github/actions/job-set-up
-
-      - run: ./gradlew clean desktopTest -p shared/
+      - run: ./gradlew clean testDebugUnitTest -p NoiseCaptureCommon/
 
   KMP-iOS:
     if: ${{ inputs.shouldRunKmp == 'true'}}
@@ -97,4 +70,4 @@ jobs:
       - name: Job set up
         uses: ./.github/actions/job-set-up
 
-      - run: if [[ $(uname -m) == 'arm64' ]]; then ./gradlew clean iosSimulatorArm64Test -p shared/; else ./gradlew clean iosX64Test -p shared/; fi
+      - run: if [[ $(uname -m) == 'arm64' ]]; then ./gradlew clean iosSimulatorArm64Test -p NoiseCaptureCommon/; else ./gradlew clean iosX64Test -p NoiseCaptureCommon/; fi
