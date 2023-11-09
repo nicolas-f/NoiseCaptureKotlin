@@ -24,7 +24,7 @@ jobs:
       - name: Job set up
         uses: ./.github/actions/job-set-up
 
-      - run: ./gradlew :NoiseCaptureAndroid:assemble
+      - run: ./gradlew :NoiseCapture:assemble
 
   iOS:
     if: ${{ inputs.shouldRunKmp == 'true' || inputs.shouldRunIos == 'true' }}
@@ -39,4 +39,4 @@ jobs:
       - name: iOS set up
         uses: ./.github/actions/ios-set-up
 
-      - run: xcodebuild build -workspace NoiseCaptureIOS/NoiseCaptureIOS.xcworkspace -configuration Debug -scheme NoiseCaptureIOS -sdk iphoneos -destination name='iPhone 14' -verbose
+      - run: xcodebuild build -workspace iosApp/iosApp.xcworkspace -configuration Debug -scheme iosApp -sdk iphoneos -destination name='iPhone 14' -verbose

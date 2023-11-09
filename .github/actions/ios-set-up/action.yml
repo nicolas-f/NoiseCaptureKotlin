@@ -3,7 +3,5 @@ description: Sets up Kotlin Native
 runs:
   using: "composite"
   steps:
-    - shell: bash
-      run: ./gradlew :NoiseCaptureCommon:iosSimulatorArm64Test
-    - shell: bash
-      run: ./gradlew :NoiseCaptureCommon:iosX64Test
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
