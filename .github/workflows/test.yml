@@ -25,7 +25,6 @@ jobs:
 
   iOS:
     if: ${{ inputs.shouldRunIos == 'true' }}
-    needs: [code-style]
     runs-on: macos-13
     timeout-minutes: 60
     steps:
