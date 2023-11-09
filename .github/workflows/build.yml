@@ -3,6 +3,9 @@ name: Build
 on:
   workflow_call:
     inputs:
+      shouldRunKmp:
+        required: true
+        type: string
       shouldRunAndroid:
         required: true
         type: string
@@ -12,7 +15,7 @@ on:
 
 jobs:
   Android:
-    if: ${{ inputs.shouldRunAndroid == 'true' }}
+    if: ${{  inputs.shouldRunKmp == 'true' || inputs.shouldRunAndroid == 'true' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +27,7 @@ jobs:
       - run: ./gradlew :NoiseCapture:assemble
 
   iOS:
-    if: ${{ inputs.shouldRunIos == 'true' }}
+    if: ${{  inputs.shouldRunKmp == 'true' || inputs.shouldRunIos == 'true' }}
     runs-on: macos-13
     timeout-minutes: 60
     steps:
