@@ -1,18 +1,9 @@
 name: iOS set up
-description: Sets up Kotlin Native and Cocoapods
+description: Sets up Kotlin Native
 runs:
   using: "composite"
   steps:
     - shell: bash
-      run: ./gradlew :NoiseCaptureCommon:generateDummyFramework
-
-    - name: Set up cocoapods
-      uses: maxim-lobanov/setup-cocoapods@v1
-      with:
-        version: latest
-
+      run: ./gradlew :NoiseCaptureCommon:iosSimulatorArm64Test
     - shell: bash
-      name: Install Dependencies
-      run: |
-        cd iosApp
-        pod install --verbose
+      run: ./gradlew :NoiseCaptureCommon:iosX64Test
