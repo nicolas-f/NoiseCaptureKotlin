@@ -54,6 +54,7 @@ jobs:
     needs: SetUp
     uses: ./.github/workflows/test.yml
     with:
+      shouldRunKmp: ${{ needs.SetUp.outputs.shouldRunKmp }}
       shouldRunAndroid: ${{ needs.SetUp.outputs.shouldRunAndroid }}
       shouldRunIos: ${{ needs.SetUp.outputs.shouldRunIos }}
 
