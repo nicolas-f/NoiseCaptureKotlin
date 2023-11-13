@@ -1,3 +1,5 @@
+package org.noise_planet.noisecapture
+
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {

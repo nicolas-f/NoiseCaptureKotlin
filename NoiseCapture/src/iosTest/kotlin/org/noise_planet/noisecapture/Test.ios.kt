@@ -1,6 +1,5 @@
 package org.noise_planet.noisecapture
 
-import Greeting
 import kotlin.test.Test
 import kotlin.test.assertTrue
 

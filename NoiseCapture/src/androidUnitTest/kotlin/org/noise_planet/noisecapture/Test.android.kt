@@ -1,6 +1,5 @@
 package org.noise_planet.noisecapture
 
-import Greeting
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
