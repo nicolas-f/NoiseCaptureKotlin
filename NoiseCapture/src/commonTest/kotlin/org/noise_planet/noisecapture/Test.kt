@@ -10,3 +10,4 @@ class CommonGreetingTest {
         assertTrue(Greeting().greet().contains("Hello"), "Check 'Hello' is mentioned")
     }
 }
+
