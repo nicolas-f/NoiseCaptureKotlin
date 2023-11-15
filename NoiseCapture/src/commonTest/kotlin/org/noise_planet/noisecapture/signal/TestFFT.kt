@@ -1,12 +1,19 @@
 package org.noise_planet.noisecapture.signal
 
+import kotlin.math.PI
+import kotlin.math.ceil
+import kotlin.math.log2
+import kotlin.math.pow
+import kotlin.math.sin
 import kotlin.test.Test
-import kotlin.math.*
-import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 
 class TestFFT {
-    private fun generateSinusoidalSignal(frequency: Double, sampleRate: Double, duration: Double): DoubleArray {
+    private fun generateSinusoidalSignal(
+        frequency: Double,
+        sampleRate: Double,
+        duration: Double
+    ): DoubleArray {
         val numSamples = (duration * sampleRate).toInt()
         val signal = DoubleArray(numSamples)
 
@@ -18,6 +25,7 @@ class TestFFT {
 
         return signal
     }
+
     @Test
     fun testRFFTSinus() {
         val frequency = 8.0 // Hz
@@ -27,8 +35,8 @@ class TestFFT {
         val spectrum = realFFT(samples)
         val result = realIFFT(spectrum)
         assertEquals(samples.size, result.size)
-        samples.forEachIndexed {
-            index, value -> assertEquals(value, result[index], 1e-8)
+        samples.forEachIndexed { index, value ->
+            assertEquals(value, result[index], 1e-8)
         }
     }
 
