@@ -30,8 +30,6 @@ fun fft(length: Int, riArray: DoubleArray) {
     require(n <= riArray.size)
     var wCos: Double
     var wSin: Double
-    var uCos: Double
-    var uSin: Double
     val n2 = n shr 1
     var l1 = n
     var l2: Int
@@ -40,8 +38,8 @@ fun fft(length: Int, riArray: DoubleArray) {
         l2 = l1 shr 1
         wCos = 1.0
         wSin = 0.0
-        uCos = cos(PI / l2)
-        uSin = -sin(PI / l2)
+        val uCos = cos(PI / l2)
+        val uSin = -sin(PI / l2)
 
         for (j in 0 until l2) {
             for (i in j until n step l1) {
@@ -97,8 +95,6 @@ fun iFFT(length: Int, riArray: DoubleArray) {
     require(n <= riArray.size)
     var wCos: Double
     var wSin: Double
-    var uCos: Double
-    var uSin: Double
     val n2 = n shr 1
     var l1 = n
     var l2: Int
@@ -107,8 +103,8 @@ fun iFFT(length: Int, riArray: DoubleArray) {
         l2 = l1 shr 1
         wCos = 1.0
         wSin = 0.0
-        uCos = cos(PI / l2)
-        uSin = sin(PI / l2)
+        val uCos = cos(PI / l2)
+        val uSin = sin(PI / l2)
 
         for (j in 0 until l2) {
             for (i in j until n step l1) {
