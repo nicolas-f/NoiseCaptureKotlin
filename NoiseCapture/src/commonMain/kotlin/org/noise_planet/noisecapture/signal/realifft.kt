@@ -6,10 +6,11 @@ import kotlin.math.log2
 import kotlin.math.pow
 import kotlin.math.sin
 
-fun realIFFT(length: Int, realArray: DoubleArray) {
-    val m = log2(length.toDouble()).toInt()
+fun realIFFT(realArray: DoubleArray) : DoubleArray {
+    require(isPowerOfTwo(realArray.size - 2))
+    val outArray = realArray.copyOf()
+    val m = log2((realArray.size - 2).toDouble()).toInt()
     val n = (2.0.pow(m) + 0.5).toInt()
-    require(n <= realArray.size)
     val a = DoubleArray(n)
     val b = DoubleArray(n)
 
@@ -23,21 +24,22 @@ fun realIFFT(length: Int, realArray: DoubleArray) {
     for (k in 1 until n / 4 + 1) {
         val k2 = 2 * k
         val xr =
-            realArray[k2] * a[k2] + realArray[k2 + 1] * a[k2 + 1] + realArray[n - k2] * b[k2] - realArray[n - k2 + 1] * b[k2 + 1]
+            outArray[k2] * a[k2] + outArray[k2 + 1] * a[k2 + 1] + outArray[n - k2] * b[k2] - outArray[n - k2 + 1] * b[k2 + 1]
         val xi =
-            -realArray[k2] * a[k2 + 1] + realArray[k2 + 1] * a[k2] - realArray[n - k2] * b[k2 + 1] - realArray[n - k2 + 1] * b[k2]
+            -outArray[k2] * a[k2 + 1] + outArray[k2 + 1] * a[k2] - outArray[n - k2] * b[k2 + 1] - outArray[n - k2 + 1] * b[k2]
         val xrN =
-            realArray[n - k2] * a[n - k2] + realArray[n - k2 + 1] * a[n - k2 + 1] + realArray[k2] * b[n - k2] - realArray[k2 + 1] * b[n - k2 + 1]
+            outArray[n - k2] * a[n - k2] + outArray[n - k2 + 1] * a[n - k2 + 1] + outArray[k2] * b[n - k2] - outArray[k2 + 1] * b[n - k2 + 1]
         val xiN =
-            -realArray[n - k2] * a[n - k2 + 1] + realArray[n - k2 + 1] * a[n - k2] - realArray[k2] * b[n - k2 + 1] - realArray[k2 + 1] * b[n - k2]
-        realArray[k2] = xr
-        realArray[k2 + 1] = xi
-        realArray[n - k2] = xrN
-        realArray[n - k2 + 1] = xiN
+            -outArray[n - k2] * a[n - k2 + 1] + outArray[n - k2 + 1] * a[n - k2] - outArray[k2] * b[n - k2 + 1] - outArray[k2 + 1] * b[n - k2]
+        outArray[k2] = xr
+        outArray[k2 + 1] = xi
+        outArray[n - k2] = xrN
+        outArray[n - k2 + 1] = xiN
     }
 
-    val temp = realArray[0]
-    realArray[0] = 0.5 * realArray[0] + 0.5 * realArray[n-1]
-    realArray[1] = 0.5 * temp - 0.5 * realArray[n-1]
-    iFFT(n/2, realArray)
+    val temp = outArray[0]
+    outArray[0] = 0.5 * outArray[0] + 0.5 * outArray[n]
+    outArray[1] = 0.5 * temp - 0.5 * outArray[n]
+    iFFT(n/2, outArray)
+    return outArray.copyOf(outArray.size - 2)
 }
