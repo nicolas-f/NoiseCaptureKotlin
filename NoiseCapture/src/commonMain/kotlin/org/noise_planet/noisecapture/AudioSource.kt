@@ -1,5 +1,7 @@
 package org.noise_planet.noisecapture
 
+typealias AudioCallback = (samples: FloatArray) -> Unit
+
 /**
  * Common interface to access Audio samples from device microphone
  * As each device
