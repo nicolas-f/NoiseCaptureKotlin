@@ -40,6 +40,8 @@ kotlin {
             implementation(compose.material)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(libs.mokoPermissions)
+            implementation(libs.mokoPermissionsCompose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
