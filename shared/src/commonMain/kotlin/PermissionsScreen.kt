@@ -55,8 +55,11 @@ private fun PermissionsScreen(
     ) {
         Text(text = state)
 
-        Button(onClick = viewModel::onButtonClick) {
-            Text(text = "Click on me")
+        Button(onClick = viewModel::onButtonLocationPermClick) {
+            Text(text = "Request Location")
+        }
+        Button(onClick = viewModel::onButtonRecordPermClick) {
+            Text(text = "Request Audio Record")
         }
     }
 }
@@ -67,16 +70,28 @@ internal class PermissionsViewModel(
     private val _state: MutableStateFlow<String> = MutableStateFlow("press button")
     val state: StateFlow<String> get() = _state
 
-    fun onButtonClick() {
+    fun onButtonLocationPermClick() {
         viewModelScope.launch {
             try {
                 permissionsController.providePermission(Permission.LOCATION)
 
-                _state.value = "permission granted"
+                _state.value = "location permission granted"
             } catch (exc: RequestCanceledException) {
-                _state.value = "permission cancelled $exc"
+                _state.value = "location permission cancelled $exc"
             } catch (exc: DeniedException) {
-                _state.value = "permission denied $exc"
+                _state.value = "location permission denied $exc"
+            }
+        }
+    }
+    fun onButtonRecordPermClick() {
+        viewModelScope.launch {
+            try {
+                permissionsController.providePermission(Permission.RECORD_AUDIO)
+                _state.value = "audio permission granted"
+            } catch (exc: RequestCanceledException) {
+                _state.value = "audio permission cancelled $exc"
+            } catch (exc: DeniedException) {
+                _state.value = "audio permission denied $exc"
             }
         }
     }
