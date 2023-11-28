@@ -1,4 +1,4 @@
-package com.myapplication
+package org.noise_planet.noisecapture
 
 import MainView
 import android.os.Bundle

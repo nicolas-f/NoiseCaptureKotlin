@@ -1,6 +1,5 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
     id("dev.icerock.mobile.multiplatform-resources")
@@ -9,22 +8,15 @@ plugins {
 kotlin {
     android()
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        version = "1.0.0"
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        podfile = project.file("../iosApp/Podfile")
-        framework {
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
-        extraSpecAttributes["exclude_files"] = "['src/commonMain/resources/MR/**']"
     }
 
     sourceSets {
@@ -73,7 +65,7 @@ kotlin {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "com.myapplication.common"
+    multiplatformResourcesPackage = "org.noise_planet.noisecapture.common"
 }
 
 android {
@@ -87,7 +79,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -96,4 +87,5 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+
 }
