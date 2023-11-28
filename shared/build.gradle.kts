@@ -28,12 +28,6 @@ kotlin {
     }
 
     sourceSets {
-        val mokoResourcesVersion = extra["moko.resources.version"] as String
-        val mokoMvvmVersion = extra["moko.mvvm.version"] as String
-        val mokoPermissionsVersion = extra["moko.permissions.version"] as String
-        val mokoMediaVersion = extra["moko.media.version"] as String
-        val mokoBiometryVersion = extra["moko.biometry.version"] as String
-        val mokoGeoVersion = extra["moko.geo.version"] as String
 
         val commonMain by getting {
             dependencies {
@@ -43,27 +37,27 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                implementation("dev.icerock.moko:resources-compose:$mokoResourcesVersion")
+                implementation(libs.moko.resources.compose)
 
-                implementation("dev.icerock.moko:mvvm-compose:$mokoMvvmVersion")
+                implementation(libs.moko.mmvm.compose)
 
-                implementation("dev.icerock.moko:permissions-compose:$mokoPermissionsVersion")
+                implementation(libs.moko.permissions.compose)
 
-                implementation("dev.icerock.moko:media-compose:$mokoMediaVersion")
+                implementation(libs.moko.media.compose)
 
-                implementation("dev.icerock.moko:biometry-compose:$mokoBiometryVersion")
+                implementation(libs.moko.biometry.compose)
 
-                implementation("dev.icerock.moko:geo-compose:$mokoGeoVersion")
+                implementation(libs.moko.geo.compose)
 
                 // fix of Could not find "shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-atomicfu-0.17.3-nativeInterop-8G5yng.klib"
-                implementation("org.jetbrains.kotlinx:atomicfu:0.17.3")
+                implementation(libs.kotlinx.atomicfu)
             }
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.activity:activity-compose:1.6.1")
-                api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.9.0")
+                api(libs.androidx.activity.compose)
+                api(libs.androidx.appcompat)
+                api(libs.androidx.core.ktx)
             }
         }
         val iosX64Main by getting
