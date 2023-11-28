@@ -1,8 +1,8 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.compose")
-    id("dev.icerock.mobile.multiplatform-resources")
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.mokoMultiplatformResources)
 }
 
 kotlin {
