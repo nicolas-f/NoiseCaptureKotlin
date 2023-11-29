@@ -4,7 +4,7 @@ compose-plugin = "1.5.11"
 compose-compiler = "1.5.4"
 agp = "7.4.2"
 atomicfu = "0.21.0"
-android-minSdk = "24"
+android-minSdk = "23"
 android-compileSdk = "34"
 android-targetSdk = "34"
 androidx-activityCompose = "1.8.1"
@@ -47,6 +47,7 @@ moko-media-compose = { module = "dev.icerock.moko:media-compose", version.ref = 
 moko-biometry-compose = { module = "dev.icerock.moko:biometry-compose", version.ref = "mokoBiometryVersion"}
 moko-geo-compose = { module = "dev.icerock.moko:geo-compose", version.ref = "mokoGeoVersion"}
 kotlinx-atomicfu =  { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfu"}
+androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version = "1.5.4" }
 
 [plugins]
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }

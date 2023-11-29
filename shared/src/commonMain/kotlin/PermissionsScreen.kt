@@ -18,9 +18,13 @@ import dev.icerock.moko.permissions.RequestCanceledException
 import dev.icerock.moko.permissions.compose.BindEffect
 import dev.icerock.moko.permissions.compose.PermissionsControllerFactory
 import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlin.math.log10
+import kotlin.math.round
+import kotlin.math.sqrt
 
 @Composable
 internal fun PermissionsScreen(
@@ -61,6 +65,9 @@ private fun PermissionsScreen(
         Button(onClick = viewModel::onButtonRecordPermClick) {
             Text(text = "Request Audio Record")
         }
+        Button(onClick = viewModel::onButtonRecordStartRecordClick) {
+            Text(text = "Start Audio Record")
+        }
     }
 }
 
@@ -69,6 +76,7 @@ internal class PermissionsViewModel(
 ) : ViewModel() {
     private val _state: MutableStateFlow<String> = MutableStateFlow("press button")
     val state: StateFlow<String> get() = _state
+    val audioSource = createAudioSource()
 
     fun onButtonLocationPermClick() {
         viewModelScope.launch {
@@ -94,5 +102,15 @@ internal class PermissionsViewModel(
                 _state.value = "audio permission denied $exc"
             }
         }
+    }
+    fun onButtonRecordStartRecordClick() {
+        audioSource.setup(48000, 8192, callback = {
+                samples: FloatArray ->
+            val spl = 10*log10(samples.map { it * it }.average())
+            println(spl)
+            viewModelScope.launch {
+                _state.value = "${round(spl*100)/100} dB"
+            }
+        })
     }
 }
