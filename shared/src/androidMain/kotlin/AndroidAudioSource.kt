@@ -56,6 +56,7 @@ class AndroidAudioSource : AudioSource, Runnable {
             }
             callback(buffer)
         }
+        bufferSize = -1
     }
 
 

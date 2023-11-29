@@ -68,6 +68,9 @@ private fun PermissionsScreen(
         Button(onClick = viewModel::onButtonRecordStartRecordClick) {
             Text(text = "Start Audio Record")
         }
+        Button(onClick = viewModel::onButtonRecordStopRecordClick) {
+            Text(text = "Stop Audio Record")
+        }
     }
 }
 
@@ -112,5 +115,10 @@ internal class PermissionsViewModel(
                 _state.value = "${round(spl*100)/100} dB"
             }
         })
+    }
+
+
+    fun onButtonRecordStopRecordClick() {
+        audioSource.release()
     }
 }
